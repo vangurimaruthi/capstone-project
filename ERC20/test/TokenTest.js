@@ -8,7 +8,7 @@ contract('MTToken', function(accounts){
             return tokenInstance.totalSupply();
         }).then(function(totalSupply){
             assert.equal(totalSupply.toNumber(),10000,'set total supply to 10,000');
-            return tokenInstance.balances(accounts[0]);
+            return tokenInstance.balanceOf(accounts[0]);
         }).then(function(adminBalance){
             assert.equal(adminBalance.toNumber(),10000, "Owner Account was not funded/incorrect balance");
         });
