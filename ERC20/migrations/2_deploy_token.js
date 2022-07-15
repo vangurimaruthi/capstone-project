@@ -1,7 +1,7 @@
 const MTToken = artifacts.require("ERC20");
 
 module.exports = function (deployer) {
-  deployer.deploy(MTToken);
+  deployer.deploy(MTToken,"Marz Token","MtZ",10000,2);
 };
 
 
