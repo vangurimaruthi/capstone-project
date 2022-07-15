@@ -2,6 +2,31 @@ const MTToken = artifacts.require("ERC20");
 
 contract('MTToken', function(accounts){
     var tokenInstance;
+    it('Checks token details', function(){
+        return MTToken.deployed().then(function(instance){
+            tokenInstance =  instance;
+            return tokenInstance.name();
+        }).then(function(name){
+            assert.equal(name,'Marz Token','Invalid Token Name');
+            return tokenInstance.symbol();
+        }).then(function(symbol){
+            assert.equal(symbol,'MtZ','Invlid symbol');
+            return tokenInstance.decimals();
+        }).then(function(decimal){
+            assert.equal(decimal.toNumber(),2,'Decimal number is not valid')
+        })
+    })
+
+    it('Valite transfer function',function(){
+        return MTToken.deployed().then(function(instance){
+            tokenInstance = instance;
+            return tokenInstance.transfer.call(accounts[1],9999999);
+        }).then(assert.fail).catch(function(error){
+            assert(error.message.indexOf('Insufficient') >=0, 'Insufficient Balance check failed' );
+        })
+    })
+
+
     it('sets the total supply upon deployment', function(){
         return MTToken.deployed().then(function(instance){
             tokenInstance = instance;
