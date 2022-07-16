@@ -53,4 +53,20 @@ contract('MTToken', function(accounts){
             assert.equal(balance.toNumber(),9999,'Wrong Balance debited');
         });
     });
+
+    it('approves tokens for delegated transfer', function() {
+        return MTToken.deployed().then(function(instance) {
+        tokenInstance = instance;
+        return tokenInstance.approve.call(accounts[1], 20);
+        }).then(function(success) {
+        assert.equal(success, true, 'Approve is failed');
+        return tokenInstance.approve(accounts[1], 20, { from: accounts[0] });
+        }).then(function(receipt) {
+        assert.equal(receipt.logs.length, 1, 'triggers one event');
+        assert.equal(receipt.logs[0].event, 'Approval', 'should be the "Approval" event');
+        assert.equal(receipt.logs[0].args.tokenOwner, accounts[0], 'Incorrect Owner Details');
+        assert.equal(receipt.logs[0].args.spender, accounts[1], 'Incorrect Spender Details');
+        assert.equal(receipt.logs[0].args.tokens, 20, 'Incorrect tokens');
+        });
+    });
 });
