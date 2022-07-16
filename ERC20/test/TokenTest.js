@@ -14,20 +14,10 @@ contract('MTToken', function(accounts){
             return tokenInstance.decimals();
         }).then(function(decimal){
             assert.equal(decimal.toNumber(),2,'Decimal number is not valid')
-        })
-    })
+        });
+    });
 
-    it('Valite transfer function',function(){
-        return MTToken.deployed().then(function(instance){
-            tokenInstance = instance;
-            return tokenInstance.transfer.call(accounts[1],9999999);
-        }).then(assert.fail).catch(function(error){
-            assert(error.message.indexOf('Insufficient') >=0, 'Insufficient Balance check failed' );
-        })
-    })
-
-
-    it('sets the total supply upon deployment', function(){
+     it('sets the total supply upon deployment', function(){
         return MTToken.deployed().then(function(instance){
             tokenInstance = instance;
             return tokenInstance.totalSupply();
@@ -36,6 +26,31 @@ contract('MTToken', function(accounts){
             return tokenInstance.balanceOf(accounts[0]);
         }).then(function(adminBalance){
             assert.equal(adminBalance.toNumber(),10000, "Owner Account was not funded/incorrect balance");
+        });
+    });
+
+    it('Valite transfer function',function(){
+        return MTToken.deployed().then(function(instance){
+            tokenInstance = instance;
+            return tokenInstance.transfer.call(accounts[1],9999999);
+        }).then(assert.fail).catch(function(error){
+            assert(error.message.indexOf('Insufficient') >=0, 'Insufficient Balance check failed' );
+            return tokenInstance.transfer.call(accounts[1],1,{from: accounts[0]});
+        }).then(function(success) {
+            assert.equal(success, true, 'it returns true');
+            return tokenInstance.transfer(accounts[1], 1, { from: accounts[0] });
+        }).then(function(receipt){
+            assert.equal(receipt.logs.length, 1, 'triggers one event');
+            assert.equal(receipt.logs[0].event, 'Transfer', 'should be the "Transfer" event');
+            assert.equal(receipt.logs[0].args.from, accounts[0], 'logs the account the tokens are transferred from');
+            assert.equal(receipt.logs[0].args.to, accounts[1], 'logs the account the tokens are transferred to');
+            assert.equal(receipt.logs[0].args.tokens, 1, 'logs the transfer amount');
+            return tokenInstance.balanceOf(accounts[1]);
+        }).then(function(balance){
+            assert.equal(balance.toNumber(),1,'Invalid Balance');
+            return tokenInstance.balanceOf(accounts[0]);
+        }).then(function(balance){
+            assert.equal(balance.toNumber(),9999,'Wrong Balance debited');
         });
     });
 });
