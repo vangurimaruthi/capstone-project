@@ -77,8 +77,4 @@ contract ERC20 is IERC20{
     function allowance(address _tokenOwner, address _spender) public override view returns (uint256) {
         return allowanceOf[_tokenOwner][_spender];
     }
-
-
-
-
 }
