@@ -68,7 +68,7 @@ contract ERC20 is IERC20{
         return true;
     }
 
-    function approve(address _spender, uint256 _value) public returns (bool) {
+    function approve(address _spender, uint256 _value) public override returns (bool) {
         allowance[msg.sender][_spender] = _value;
         emit Approval(msg.sender, _spender, _value);
         return true;

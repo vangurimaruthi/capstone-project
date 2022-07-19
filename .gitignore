@@ -1,2 +1,5 @@
 
 ERC20/contracts/artifacts/*
+ERC20/build/contracts/*.json
+*.json
+ERC20/build/contracts/ERC20.json
