@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up</title>
+</head>
+<body>
+    <form action="Home.html" method = post>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="fname">
+        <br><br>
+        <label for="lname">Last Name</label>
+        <input id="lname" name="lname" type="text">
+        <br><br>
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="text">@
+        <select name="mailExtn" id="mailExtn">
+            <option value="gm">gmail.com</option>
+            <option value="hm">hotmail.com</option>
+        </select>
+        <br><br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+        <br><br>
+        <label for="cn-password">Confirm Password</label>
+        <input type="password" id="cn-password" name="cn-password">
+        <br><br>
+        <p>
+            Alerts required on
+            <label><input type="checkbox" name="alerts">SMS</label>
+            <label><input type="checkbox" name="alerts">E-Mail</label>
+        </p>
+        <input type="submit" value="Sign me up!">
+        
+
+    </form>    
+</body>
+</html>

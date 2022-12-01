@@ -1,0 +1,44 @@
+.red{
+    color: coral;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+#End-Para{
+    font-style: italic;
+}
+pre{
+    font-family: inherit;
+} 
+
+a:hover{
+    color:  rgba(94, 210, 31, 0.669);
+}
+
+a:active{
+    color: darkgoldenrod;
+}
+
+a{
+    color: blue;
+}
+
+table, th, td{
+    border: 1px solid coral;
+    border-collapse: collapse;
+}
+
+td,th{
+    padding: 10px;
+}
+
+/*tr:nth-child(even){
+    background-color: rgb(191, 199, 186);
+}*/
+
+th{
+    background-color: bisque;
+}
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors in CSS - Part 2</title>
+    <style>
+        p:first-child{
+            color: chocolate;
+        }
+
+        p:first-letter{
+            font-size: 2em;
+        }
+        
+        .second-line::first-line{
+            color :blue;
+        }
+
+        input:focus{
+            background-color: burlywood;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti consectetur, sequi expedita velit accusamus doloremque recusandae obcaecati molestias soluta natus.
+        </p>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam nemo, natus, cum provident corrupti alias ipsum non obcaecati hic quisquam ratione soluta vel, molestias reiciendis quos quae placeat delectus? Omnis!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro dolor, voluptatum, necessitatibus rem eius nemo commodi sequi quisquam, rerum mollitia aliquid consequuntur exercitationem. Facilis, voluptate cum atque et ducimus eum optio vitae suscipit dolorem officiis porro iste perferendis? Fugiat inventore qui quae eum nihil. Eius asperiores at dolorum corporis harum!
+        </p>
+    </div>
+    <div class="second-line">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius earum nulla quod, est sapiente ratione molestiae ullam, cum dicta tempora fuga rerum! Id tempore atque earum magni harum odit reiciendis voluptatum fugit neque dignissimos. Magni quos, quas harum molestiae iure nemo consequuntur esse accusamus, vel magnam blanditiis consequatur adipisci ab..
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat autem error in amet ullam labore sit! Placeat voluptas, odit delectus et voluptates ipsam ut accusantium laudantium possimus ea enim est?
+        </p>
+    </div>
+
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name">
+        <br><br>
+        <label for="age">Age</label>
+        <input type="number" id="age" min="1" max="150">
+    </div>
+    
+</body>
+</html>
